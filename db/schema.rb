@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104221543) do
+ActiveRecord::Schema.define(version: 20170222011821) do
+
+  create_table "products", force: :cascade do |t|
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "total_reviews"
+    
+    #add an index to product_id because the local database will be searched by the shopify product id
+    t.integer  "product_id",      limit: 8
+    t.integer  "total_visits"
+    t.integer  "review_views"
+    t.integer  "total_sales"
+    t.integer  "review_to_sales"
+    t.integer  "vendor_id"
+    t.string   "product_name"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "rating"
+    t.text     "comment"
+    t.string   "author_name"
+    t.string   "author_email"
+    t.text     "vendor_response"
+    t.boolean  "response_resolved"
+    t.datetime "solicit_review_at"
+    t.boolean  "incorporated_into_aggregate"
+    t.integer  "product_id"
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string   "shopify_domain", null: false
@@ -18,6 +47,21 @@ ActiveRecord::Schema.define(version: 20170104221543) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
+  end
+
+  create_table "vendors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "superuser"
+    t.string   "discount_code"
+    t.boolean  "banned"
+    t.boolean  "admin"
+    t.string   "access_key"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
+    t.string   "store_id"
+    t.index ["email"], name: "index_vendors_on_email", unique: true
   end
 
 end
