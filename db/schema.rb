@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222011821) do
+ActiveRecord::Schema.define(version: 20170222015558) do
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "total_reviews"
-    
-    #add an index to product_id because the local database will be searched by the shopify product id
     t.integer  "product_id",      limit: 8
     t.integer  "total_visits"
     t.integer  "review_views"
@@ -25,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170222011821) do
     t.integer  "review_to_sales"
     t.integer  "vendor_id"
     t.string   "product_name"
+    t.index ["product_id"], name: "index_products_on_product_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -39,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170222011821) do
     t.datetime "solicit_review_at"
     t.boolean  "incorporated_into_aggregate"
     t.integer  "product_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170222011821) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "store_id"
-    t.index ["email"], name: "index_vendors_on_email", unique: true
+    t.index ["store_id"], name: "index_vendors_on_store_id"
   end
 
 end

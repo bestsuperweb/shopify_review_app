@@ -1,0 +1,6 @@
+class VendorsController < ApplicationController
+
+	
+
+	
+end
