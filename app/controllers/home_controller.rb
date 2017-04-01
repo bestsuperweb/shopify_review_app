@@ -5,22 +5,20 @@ class HomeController < ShopifyApp::AuthenticatedController
 
   def index
 
-  	#if it's a new vendor (i.e. if there is no current vendor like this in the db)
-  		#then load all product names, etc. into the db
-  	#Need something in the db to link to shopify's products.	
-    #@myProducts = ShopifyAPI::Product.find(:all, params: { limit: 5 })
-    #grab all the reviews for each product
-  #   @myProducts.each do |prod|
-  #   	@myReviews[prod.title] = prod.reviews;
-  # end
-
 #Add new vendor & products to database if they don't already exist there
-  shopifyVendor = ShopifyAPI::Shop.current 
-  
+#once new vendor is added populate database with vendor's current products
+  shopifyVendor = ShopifyAPI::Shop.current
+
+  puts "puts Here"
+
   unless Vendor.exists?(store_id: shopifyVendor.id)
+
+    #creates a new vendor identifiable by store_id and domain 
   	myVendor = CreateVendor
+    populateLocalDatabase(myVendor)
   end
 
+  #Calls the shopify API therefore 'find all products' only returns this vendor's products
   @vendorProducts = ShopifyAPI::Product.find(:all)
 
 end

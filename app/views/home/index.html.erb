@@ -12,7 +12,7 @@
 <h2>Products:</h2>
 <ul>
 <% @vendorProducts.each do |product| %> 
-	 <li><%= product.title %> </li>
+	<li><%= product.title %> </li>
 <%end%> 
 </ul>
 <%# <%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %>

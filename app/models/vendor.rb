@@ -8,7 +8,7 @@ class Vendor < ApplicationRecord
  #      t.boolean :admin
  #      t.string :access_key	
 
- 	has_one :shop
+ 	belongs_to :vendor
  	has_many :products, {autosave: true, dependent: :destroy}
 
 	#still need to add 'password_digest' to migration
