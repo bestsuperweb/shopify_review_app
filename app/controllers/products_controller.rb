@@ -1,2 +1,9 @@
-class ProductsController < ApplicationController
+class ProductsController < ShopifyApp::AuthenticatedController
+
+
+
+
+
+
+	
 end

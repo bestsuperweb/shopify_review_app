@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class ReviewsController < ShopifyApp::AuthenticatedController
 
 def new
 end

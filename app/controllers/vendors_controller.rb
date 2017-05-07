@@ -1,4 +1,4 @@
-class VendorsController < ApplicationController
+class VendorsController < ShopifyApp::AuthenticatedController
 
 	
 
