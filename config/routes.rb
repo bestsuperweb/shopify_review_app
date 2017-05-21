@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root :to => 'home#index'
 
-
-  resources :vendors
-
   #capture the parent/child relationship in the routing
   resources :products do
   	resources :reviews 

@@ -8,7 +8,8 @@ class Product < ApplicationRecord
  #    :total_sales, :int
  #    :review_to_sales, :int
 
-	belongs_to :vendor 
+	
+	belongs_to :shop
 	has_many :reviews, {dependent: :destroy, autosave: true}
 
 end

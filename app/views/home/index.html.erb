@@ -11,8 +11,14 @@
 
 <h2>Products:</h2>
 <ul>
-<% @vendorProducts.each do |product| %> 
-	<li><%= product.title %> </li>
+<% @shopProducts.each do |product| %> 
+	<li><%= product.product_name %> <br> 
+	
+	<%= render partial: 'reviews/review', collection: product.reviews %> 
+
+	<%= render 'products/accept_review' %> 
+	</li>
+
 <%end%> 
 </ul>
 <%# <%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %>

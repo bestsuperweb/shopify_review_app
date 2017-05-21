@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222015558) do
+ActiveRecord::Schema.define(version: 20170510003527) do
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20170222015558) do
     t.integer  "review_views"
     t.integer  "total_sales"
     t.integer  "review_to_sales"
-    t.integer  "vendor_id"
     t.string   "product_name"
+    t.integer  "shop_id"
     t.index ["product_id"], name: "index_products_on_product_id"
   end
 
@@ -42,10 +42,19 @@ ActiveRecord::Schema.define(version: 20170222015558) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string   "shopify_domain", null: false
-    t.string   "shopify_token",  null: false
+    t.string   "shopify_domain",  null: false
+    t.string   "shopify_token",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "superuser"
+    t.string   "discount_code"
+    t.boolean  "banned"
+    t.boolean  "admin"
+    t.string   "access_key"
+    t.string   "password_digest"
+    t.boolean  "isUpToDate"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 

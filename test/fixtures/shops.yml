@@ -1,3 +1,4 @@
-regular_shop:
+test_shop:
   shopify_domain: 'regular-shop.myshopify.com'
   shopify_token: 'token'
+  name: 'test_shop'
