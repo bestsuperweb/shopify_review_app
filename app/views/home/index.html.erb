@@ -16,7 +16,7 @@
 	
 	<%= render partial: 'reviews/review', collection: product.reviews %> 
 
-	<%= render 'products/accept_review' %> 
+	<%= render partial: 'products/accept_review', locals: {product: product} %> 
 	</li>
 
 <%end%> 

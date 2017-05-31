@@ -1,0 +1,10 @@
+<div class="error-explanation">
+	<div class="alert alert-danger">
+		<%= pluralize(locals[:errorObj].errors.count, 'error') %> 
+	</div>
+	<ul>
+		<%locals[:errorObj].errors.full_messages.each do |msg| %> 
+			<li> <%= msg %> </li>
+		<% end %> 
+	</ul>
+</div>

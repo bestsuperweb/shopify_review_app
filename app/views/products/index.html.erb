@@ -1,0 +1,11 @@
+<%provide(:title, "All Products")%> 
+<h2>Products:</h2>
+
+  <% @shopProducts.each do |product| %> 
+    <h3><%= product.product_name %> </h3><br> 
+  	
+  	<%= render partial: 'reviews/review', collection: product.reviews %> 
+  	<%= render partial: 'products/accept_review', locals: {product: product} %> 
+
+
+  <%end%> 
